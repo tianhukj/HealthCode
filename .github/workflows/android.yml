@@ -25,7 +25,7 @@ jobs:
         java-version: '11'
 
     - name: Install Ant
-      run: sudo apt-get update && sudo apt-get install ant
+      run: sudo apt-get update && sudo apt-get install -y ant
 
     - name: Set up Android SDK
       uses: android-actions/setup-android@v2
@@ -34,7 +34,11 @@ jobs:
         target: default
         arch: x86_64
 
+    - name: Create local.properties
+      run: echo "sdk.dir=$ANDROID_SDK_ROOT" > app/local.properties
+
     - name: Build with Ant
+      working-directory: app
       run: ant debug
 
     - name: Upload APK

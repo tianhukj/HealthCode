@@ -2,17 +2,17 @@
     <property file="local.properties"/>
     <property file="ant.properties"/>
     <property environment="env"/>
-
+    
     <path id="android.target.classpath">
         <pathelement path="${sdk.dir}/platforms/${target}/android.jar"/>
     </path>
-
+    
     <path id="android.antlibs">
-        <pathelement path="${sdk.dir}/tools/lib/ant-tasks.jar"/>
+        <pathelement path="${sdk.dir}/cmdline-tools/latest/lib/ant-tasks.jar"/>
     </path>
-
+    
     <taskdef name="setup" classname="com.android.ant.SetupTask" classpathref="android.antlibs"/>
     <setup/>
-
-    <import file="${sdk.dir}/tools/ant/build.xml"/>
+    
+    <import file="${sdk.dir}/cmdline-tools/latest/ant/build.xml"/>
 </project>

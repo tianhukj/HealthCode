@@ -27,6 +27,9 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
     
+    - name: Convert gradlew to Unix format
+      run: dos2unix gradlew
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 

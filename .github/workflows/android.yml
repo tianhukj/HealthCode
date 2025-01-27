@@ -1,4 +1,4 @@
-name: Android CI
+name: Android CI with Ant
 
 on:
   push:
@@ -7,15 +7,12 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:  # 支持手动触发
+  workflow_dispatch:
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    env:
-      GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
 
     steps:
     - name: Checkout repository
@@ -27,23 +24,21 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
 
-    # 安装 dos2unix
-    - name: Install dos2unix
-      run: sudo apt-get update && sudo apt-get install dos2unix
+    - name: Install Ant
+      run: sudo apt-get update && sudo apt-get install ant
 
-    # 将 gradlew 文件转换为 Unix 格式
-    - name: Convert gradlew to Unix format
-      run: dos2unix gradlew
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v2
+      with:
+        api-level: 30
+        target: default
+        arch: x86_64
 
-    # 赋予 gradlew 文件执行权限
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
-    - name: Build with Gradle
-      run: ./gradlew assembleRelease
+    - name: Build with Ant
+      run: ant debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
-        name: app-release.apk
-        path: app/build/outputs/apk/release/app-release.apk
+        name: HealthCodeApp-debug.apk
+        path: app/bin/HealthCodeApp-debug.apk

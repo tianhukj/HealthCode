@@ -7,7 +7,7 @@
 PRG="$0"
 
 # Resolve symbolic links
-while [ -h "$PRG"`; do
+while [ -h "$PRG" ]; do
   ls=`ls -ld "$PRG"`
   link=`expr "$ls" : '.*-> \(.*\)$'`
   if expr "$link" : '/.*' > /dev/null; then
@@ -38,7 +38,7 @@ location of your Java installation."
     fi
 else
     JAVACMD="`which java`"
-    if [ ! -x "$JAVACMD" ] ; then
+    if [ ! -x "$JAVACMD" ]; then
         die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
 
 Please set the JAVA_HOME variable in your environment to match the
@@ -51,6 +51,6 @@ APP_NAME="Gradle"
 APP_BASE_NAME=`basename "$0"`
 GREP="grep"
 
-CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper-shared-8.0.jar
 
 exec "$JAVACMD" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"

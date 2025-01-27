@@ -1,6 +1,5 @@
 name: Android CI
 
-# 触发器配置
 on:
   push:
     branches:
@@ -35,7 +34,7 @@ jobs:
       run: ./gradlew assembleRelease
 
     - name: Upload APK
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # 更新为最新版本
       with:
         name: app-release.apk
         path: app/build/outputs/apk/release/app-release.apk

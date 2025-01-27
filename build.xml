@@ -1,0 +1,14 @@
+<project name="HealthCodeApp" default="debug" basedir=".">
+    <property file="local.properties"/>
+    <property file="ant.properties"/>
+    <property environment="env"/>
+
+    <path id="android.target.classpath">
+        <pathelement path="${sdk.dir}/platforms/${target}/android.jar"/>
+    </path>
+
+    <taskdef name="setup" classname="com.android.ant.SetupTask" classpathref="android.antlibs"/>
+    <setup/>
+
+    <import file="${sdk.dir}/tools/ant/build.xml"/>
+</project>

@@ -35,7 +35,7 @@ jobs:
         arch: x86_64
 
     - name: Create local.properties
-      run: echo "sdk.dir=$ANDROID_SDK_ROOT" > app/local.properties
+      run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
     - name: Build with Ant
       working-directory: app

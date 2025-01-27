@@ -7,6 +7,10 @@
         <pathelement path="${sdk.dir}/platforms/${target}/android.jar"/>
     </path>
 
+    <path id="android.antlibs">
+        <pathelement path="${sdk.dir}/tools/lib/ant-tasks.jar"/>
+    </path>
+
     <taskdef name="setup" classname="com.android.ant.SetupTask" classpathref="android.antlibs"/>
     <setup/>
 

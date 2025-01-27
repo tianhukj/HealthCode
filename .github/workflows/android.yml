@@ -26,10 +26,16 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '11'
-    
+
+    # 安装 dos2unix
+    - name: Install dos2unix
+      run: sudo apt-get update && sudo apt-get install dos2unix
+
+    # 将 gradlew 文件转换为 Unix 格式
     - name: Convert gradlew to Unix format
       run: dos2unix gradlew
 
+    # 赋予 gradlew 文件执行权限
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 

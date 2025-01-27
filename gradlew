@@ -51,6 +51,6 @@ APP_NAME="Gradle"
 APP_BASE_NAME=`basename "$0"`
 GREP="grep"
 
-CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper-shared-8.0.jar
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper-shared-8.0.jar  # 更新路径
 
 exec "$JAVACMD" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
